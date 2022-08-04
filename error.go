@@ -23,7 +23,7 @@ type Error struct {
 	Exposable bool      `json:"-"`
 }
 
-func (e Error) Error() string {
+func (e *Error) Error() string {
 	msg := strings.Join(e.Messages, " - ")
 	if e.Cause != nil {
 		msg = fmt.Sprintf("%s - Cause: ", e.Error())
