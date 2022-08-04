@@ -17,10 +17,10 @@ const (
 )
 
 type Error struct {
-	Messages  []string
-	Cause     error
-	Type      ErrorType
-	Exposable bool
+	Messages  []string  `json:"messages"`
+	Cause     error     `json:"-"`
+	Type      ErrorType `json:"-"`
+	Exposable bool      `json:"-"`
 }
 
 func (e Error) Error() string {
