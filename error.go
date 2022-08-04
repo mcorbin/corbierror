@@ -31,24 +31,24 @@ func (e *Error) Error() string {
 	return msg
 }
 
-func New(message string, t ErrorType, exposable bool) Error {
-	return Error{
+func New(message string, t ErrorType, exposable bool) *Error {
+	return &Error{
 		Messages:  []string{message},
 		Type:      t,
 		Exposable: exposable,
 	}
 }
 
-func Newf(message string, t ErrorType, exposable bool, params ...interface{}) Error {
-	return Error{
+func Newf(message string, t ErrorType, exposable bool, params ...interface{}) *Error {
+	return &Error{
 		Messages:  []string{fmt.Sprintf(message, params...)},
 		Type:      t,
 		Exposable: exposable,
 	}
 }
 
-func Wrap(e error, message string, t ErrorType, exposable bool) Error {
-	return Error{
+func Wrap(e error, message string, t ErrorType, exposable bool) *Error {
+	return &Error{
 		Messages:  []string{message},
 		Type:      t,
 		Exposable: exposable,
@@ -56,8 +56,8 @@ func Wrap(e error, message string, t ErrorType, exposable bool) Error {
 	}
 }
 
-func Wrapf(e error, message string, t ErrorType, exposable bool, params ...interface{}) Error {
-	return Error{
+func Wrapf(e error, message string, t ErrorType, exposable bool, params ...interface{}) *Error {
+	return &Error{
 		Messages:  []string{fmt.Sprintf(message, params...)},
 		Type:      t,
 		Exposable: exposable,
